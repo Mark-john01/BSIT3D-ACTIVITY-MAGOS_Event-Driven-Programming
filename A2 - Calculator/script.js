@@ -7,7 +7,6 @@
 
 /* ====== Your code starts below ====== */
 
-// 1. Constructor Function
 function Calculator(previousOperandTextElement, currentOperandTextElement) {
   this.previousOperandTextElement = previousOperandTextElement;
   this.currentOperandTextElement = currentOperandTextElement;
@@ -95,22 +94,18 @@ Calculator.prototype.updateDisplay = function() {
   }
 };
 
-// 3. Initialize Calculator using classic document methods
 var previousOperandTextElement = document.getElementById('previous-operand');
 var currentOperandTextElement = document.getElementById('current-operand');
 var calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
-// 4. Use the document object for Event Delegation
 document.addEventListener('click', function(event) {
   var target = event.target;
   
-  // Ignore clicks that aren't on buttons
   if (target.tagName !== 'BUTTON') return;
 
   var action = target.getAttribute('data-action');
   var number = target.getAttribute('data-number');
 
-  // Route the click based on the attributes
   if (number !== null) {
     calculator.appendNumber(number);
     calculator.updateDisplay();
